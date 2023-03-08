@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
     // echo ($fname . " " . $lname . " " . $pass . " " . $role);
-    $query = "select * from posts ;";
+    $query = "select * from comments ;";
     $result = $conn->query($query);
 
     // // iterate over $result object one $row at a time // use fetch_array() to return an associative array while($row = $result->fetch_array()){
@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         );
     } else {
         if (move_uploaded_file($_FILES["fileUpload"]["tmp_name"], $target_file)) {
-            $sql_query = "INSERT INTO posts (`title`,`content`,`tag`,`category`) VALUES ($title,$content,$tag,$category)";
+            $sql_query = "INSERT INTO comments (`title`,`content`,`tag`,`category`) VALUES ($title,$content,$tag,$category)";
             // execute the SQL query
             $result = $conn->query($sql_query);
             if ($result) {

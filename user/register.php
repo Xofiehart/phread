@@ -33,6 +33,9 @@
                         <div class="p-5">
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                                <p class="alert">
+
+                                </p>
                             </div>
 
                             <form class="user" method="post" action="./register.php">
@@ -119,9 +122,18 @@
                 role
             }
             $.post("./actions/register.php", data, function(data, status) {
-                // console.log('data', data)
-                window.location.replace("/user/login.html");
-                alert("Registered");
+                console.log('data', data)
+                // var jdata = JSON.parse(data)
+                if (jdata['status'] == 200) {
+                    $(".alert").html(jdata['message'])
+                    setTimeout(() => {
+                        window.location.replace("./login.php");
+                    }, 2000);
+
+
+                } else {
+                    $(".alert").html(jdata['message'])
+                }
             });
         });
     </script>

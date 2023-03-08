@@ -55,5 +55,11 @@
           <script src="js/demo/chart-pie-demo.js"></script>
 
           </body>
+          <script>
+              $("document").ready(() => {
+                  var user = JSON.parse(localStorage.getItem("user"))
+                  $(".username").text(user['fullname'])
+              })
+          </script>
 
           </html>

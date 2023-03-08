@@ -15,14 +15,19 @@
                 echo "Failed to connect to MySQL: " . mysqli_connect_error();
             }
             // echo ($fname . " " . $lname . " " . $pass . " " . $role);
-            $query = "select email,password from user where email='" . $email . "';";
+            $query = "select email,password,fullname,role from user where email='" . $email . "';";
             $result = $conn->query($query);
             // // iterate over $result object one $row at a time // use fetch_array() to return an associative array while($row = $result->fetch_array()){
-            while ($row = $result->fetch_array()) {
+            $row = $result->fetch_all();
 
-                if ($row['password'] === md5($pass)) {
-                    return true;
-                }
+            if ($row[0][1] === md5($pass)) {
+                $response = json_encode(array("message" => "successfully logged in", "status" => 200, "data" => array("fullname" => $row[0][2], "role" => $row[0][3])));
+                $_SESSION['user'] =
+                    json_encode(array("fullname" => $row[0][2], "role" => $row[0][3]));
+                echo ($response);
+            } else {
+                $response = json_encode(array("message" =>  "failed to login", "status" => 404));
+                echo ($response);
             }
         }
     }

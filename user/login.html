@@ -39,8 +39,12 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                        <h1 id="alert" class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                         <p class="alert">
+                                        
+                                    </p>
                                     </div>
+                                   
                                     <form class="user">
                                         <div class="form-group">
                                             <input type="email" class="email form-control form-control-user"
@@ -105,9 +109,21 @@
             }
             
             $.post("./actions/login.php", data, function (data, status) {
-                // window.location.replace("./login.html");
+                // 
                 console.log('data', data)
-                alert("Data: " + data + "\nStatus: " + status);
+                var jdata = JSON.parse(data)
+                if (jdata['status'] == 200) {
+                    localStorage.setItem("user", JSON.stringify(jdata['data']))
+                   $(".alert").html(jdata['message'])
+                   setTimeout(() => {
+                    window.location.replace("./dashboard.php");
+                   }, 2000);
+                   
+               
+                } else {
+                    $(".alert").html(jdata['message'])
+                }
+                
             });
         });
     </script>
