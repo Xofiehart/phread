@@ -1,2 +1,11 @@
 node_modules
-*.php
+.gitignore
+actions
+comments.php
+dashboard.php
+creatPost.php
+moderatePost.php
+posts.php
+users.php
+createPost.php
+footer.php
