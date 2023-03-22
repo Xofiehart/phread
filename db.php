@@ -6,7 +6,7 @@
 $servername = "localhost";
 $dbname = 'hartapp';
 $username = "root";
-$password = "@hart1234";
+$password = "@Edmund123";
 // Create connection
 // echo ("hello");
 $conn = new mysqli($servername, $username, $password, $dbname);

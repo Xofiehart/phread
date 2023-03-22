@@ -21,12 +21,14 @@ session_start()
 <body>
     <!-- Responsive navbar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container px-5">
-            <a class="navbar-brand" href="#!">PHRead</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class=" d-flex navbar-nav ms-auto px-9 mb-lg-0 justify-content-start">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.php">PHRead</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Home</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             About
@@ -47,26 +49,21 @@ session_start()
                             <li><a class=" dropdown-item" href="view.php?category=adventure">Adventure</a></li>
                         </ul>
                     </li>
-
-
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Community</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Top Stories</a></li>
 
                 </ul>
-
-                <div class=" d-flex navbar-nav justify-content-end">
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-
-                    <ul class="d-flex flex-row" id="loggedin">
-                        <li class="nav-item "><a class="nav-link" href="#contact">Contact</a></li>
+                <form action="posts.php" method="POST" class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" name="text" placeholder="Search" aria-label="Search">
+                    <ul id="loggedin" class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
 
                     </ul>
-                </div>
 
+                </form>
             </div>
         </div>
     </nav>
+
     <!-- Header-->
     <header class="bg-about-image py-5">
         <div class="container px-5">
