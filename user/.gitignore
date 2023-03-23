@@ -2,8 +2,7 @@ node_modules
 .gitignore
 actions
 comments.php
-dashboard.php
-creatPost.php
+
 
 
 
