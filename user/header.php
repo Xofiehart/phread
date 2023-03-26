@@ -113,7 +113,9 @@
                                 <!-- Heading -->
 
                                 <!-- Nav Item - Pages Collapse Menu -->
-                                <li class="nav-item">
+                                <?php
+                                if ($_SESSION['role'] != 'admin') {
+                                    echo '<li class="nav-item">
                                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
 
                                         <span>Stories</span>
@@ -125,7 +127,9 @@
                                             <a class="collapse-item" href="moderatePost.php">Review</a>
                                         </div>
                                     </div>
-                                </li>
+                                </li>';
+                                }
+                                ?>
 
                                 <!-- Nav Item - Charts -->
                                 <li class="nav-item">
