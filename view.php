@@ -215,10 +215,12 @@ session_start()
     <script>
         var user = JSON.parse(localStorage.getItem('user'))
         console.log('user', user)
-        if (!user['id']) {
-            var loggedin = document.getElementById('loggedin').innerHTML = '<li class="nav-item"><a class="nav-link" href="user/login.php">Login</a></li><li class="nav-item"><a class="nav-link" href="user/register.php">Register</a></li>'
-        } else {
+        if (user?.id) {
             var loggedin = document.getElementById('loggedin').innerHTML = '<li class="nav-item"><a class="nav-link" href="user/logout.php"> Logout</a></li><li class="nav-item"><a class="nav-link" href="user/dashboard.php"> Dashboard</a></li>'
+
+        } else {
+            var loggedin = document.getElementById('loggedin').innerHTML = '<li class="nav-item"><a class="nav-link" href="user/login.php">Login</a></li><li class="nav-item"><a class="nav-link" href="user/register.php">Register</a></li>'
+
         }
     </script>
 </body>

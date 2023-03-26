@@ -66,6 +66,7 @@ session_destroy()
                                                 <input class="form-control  btn btn-primary" type="submit" name="Login" value="Login" />
                                             </div>
                                         </div>
+                                        <a href="../index.php">Home</a>
 
                                     </form>
                                     <hr>
@@ -97,6 +98,7 @@ session_destroy()
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
     <script>
+        localStorage.removeItem('user')
         $(".btn").click(function(e) {
             e.preventDefault()
 

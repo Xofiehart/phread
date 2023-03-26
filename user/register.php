@@ -63,10 +63,10 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <select name="role" class="role form-select form-control form-control-user" aria-label="Default select example">
+                                        <select name="role" class="role form-select form-control " aria-label="Default select example">
                                             <option>select role</option>
                                             <option value="writer">Writer</option>
-                                            <option value="reader">Reader</option>
+
                                         </select>
 
                                     </div>
@@ -80,10 +80,11 @@
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                <a href="../index.php">Go Home</a>
                             </div>
                             <div class="text-center">
-                                <a class="small" href="login.html">Already have an account? Login!</a>
+
+                                <a class="small" href="login.php">Already have an account? Login!</a>
                             </div>
                         </div>
                     </div>
@@ -123,7 +124,7 @@
             }
             $.post("./actions/register.php", data, function(data, status) {
                 console.log('data', data)
-                // var jdata = JSON.parse(data)
+                var jdata = JSON.parse(data)
                 if (jdata['status'] == 200) {
                     $(".alert").html(jdata['message'])
                     setTimeout(() => {
