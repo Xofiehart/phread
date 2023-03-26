@@ -4,7 +4,7 @@
  */
 
 $servername = "localhost";
-$dbname = 'hartapp';
+$dbname = 'phread';
 $username = "root";
 $password = "";
 // Create connection
