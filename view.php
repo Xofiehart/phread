@@ -49,8 +49,7 @@ session_start()
                             <li><a class=" dropdown-item" href="view.php?category=adventure">Adventure</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Community</a></li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Top Stories</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="allPosts.php">Top Stories</a></li>
 
                 </ul>
                 <form action="posts.php" method="POST" class="d-flex" role="search">

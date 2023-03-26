@@ -28,7 +28,7 @@
                 echo ($response);
             } else {
                 $response = json_encode(array("message" =>  "failed to login", "status" => 404));
-                echo ($response);
+                echo ("failed to login: Invalid username or password");
             }
         }
     }

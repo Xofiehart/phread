@@ -21,7 +21,7 @@ include 'header.php';
         $content = $_POST['content'];
 
 
-        print_r($_FILES['file']);
+        // print_r($_FILES['file']);
         if (!file_exists($_FILES["file"]["tmp_name"])) {
             $resMessage = array(
                 "status" => "alert-danger",
@@ -43,7 +43,7 @@ include 'header.php';
                 "message" => "File already exists."
             );
         } else {
-            echo 'here';
+            // echo 'here';
             if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
                 $name = $_SESSION['fullname'];
                 $id = $_SESSION['id'];
@@ -54,7 +54,7 @@ include 'header.php';
 
                 $conn->commit();
                 if ($result) {
-                    print_r($result);
+                    echo "Post created";
                     $resMessage = array(
                         "status" => "alert-success",
                         "message" => "Image uploaded successfully."
@@ -67,7 +67,7 @@ include 'header.php';
                 );
             }
         }
-        print_r($resMessage);
+        // print_r($resMessage);
     }
     ?>
     <div class="card shadow mb-4">
