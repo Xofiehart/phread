@@ -69,7 +69,13 @@
 
 
                                 <!-- Nav Item - Pages Collapse Menu -->
-                                <li class="nav-item">
+
+
+                                <!-- Nav Item - Utilities Collapse Menu -->
+                                <?php
+                                if ($_SESSION['role'] == 'admin') {
+                                    echo ' 
+                                    <li class="nav-item">
                                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
 
                                         <span>Users</span>
@@ -82,9 +88,7 @@
                                         </div>
                                     </div>
                                 </li>
-
-                                <!-- Nav Item - Utilities Collapse Menu -->
-                                <li class="nav-item">
+                                    <li class="nav-item">
                                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
 
                                         <span>Moderate</span>
@@ -99,7 +103,9 @@
                                         </div>
                                     </div>
 
-                                </li>
+                                </li>';
+                                }
+                                ?>
 
                                 <!-- Divider -->
                                 <hr class="sidebar-divider">
