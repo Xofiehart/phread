@@ -4,9 +4,9 @@
  */
 
 $servername = "localhost";
-$dbname = 'hartapp';
+$dbname = 'phread';
 $username = "root";
-$password = "@Edmund123";
+$password = "";
 // Create connection
 // echo ("hello");
 $conn = new mysqli($servername, $username, $password, $dbname);
