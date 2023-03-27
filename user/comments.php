@@ -49,6 +49,7 @@
                 if (jdata['status'] == 200) {
                     $(".alert").html(jdata['message'])
                     alert(jdata['message'])
+                    window.location.reload()
                     var str = jdata['status']['message']
                     $("tbody").html(str)
 
