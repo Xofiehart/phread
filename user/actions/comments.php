@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "DELETE") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // collect value of input field
 
 
@@ -41,13 +41,14 @@ if ($_SERVER["REQUEST_METHOD"] == "DELETE") {
     // echo ($id);
     $query = "delete from comments where id='$id' ;";
     $result = $conn->query($query);
+    $conn->commit();
     // echo $query;
     // // iterate over $result object one $row at a time // use fetch_array() to return an associative array while($row = $result->fetch_array()){
-    $row = $result->fetch_all();
+    // $row = $result->fetch_all();
 
 
-    if ($row) {
-        $response = json_encode(array("message" => "successful", "status" => 200, "data" => $row));
+    if ($result) {
+        $response = json_encode(array("message" => "successful", "status" => 200));
 
         echo ($response);
     } else {

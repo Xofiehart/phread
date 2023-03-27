@@ -36,18 +36,41 @@
     </div>
 </div>
 <script>
+    const deleteComment = (d) => {
+        var id = JSON.parse(d)
+        console.log('id', id)
+        var msg = prompt("Are you sure you want to delete this post", "Yes")
+        if (msg) {
+            $.post("./actions/comments.php?id=" + id, function(data, status) {
+                // 
+                console.log('data', data)
+                var jdata = JSON.parse(data)
+                console.log('data', jdata)
+                if (jdata['status'] == 200) {
+                    $(".alert").html(jdata['message'])
+                    alert(jdata['message'])
+                    var str = jdata['status']['message']
+                    $("tbody").html(str)
+
+                } else {
+                    // $(".alert").html(jdata['message'])
+                }
+
+            });
+        }
+    }
     $("document").ready(() => {
         $.get("./actions/comments.php", function(data, status) {
             // 
             // console.log('data', data)
             var jdata = JSON.parse(data)
-            console.log('data', jdata)
+            console.log('data', jdata['data'][0][0])
             if (jdata['status'] == 200) {
                 // $(".alert").html(jdata['message'])
                 var str = []
                 for (let index = 0; index < jdata['data'].length; index++) {
                     str += " <tr> <td>" + jdata['data'][index][1] + "</td> <td>" +
-                        jdata['data'][index][2] + " </td> <td> " + jdata['data'][index][4] + "</td><td> <button id=" + jdata['data'][index][0] + " class='btn btn-danger'>Delete</button> </td></tr> "
+                        jdata['data'][index][2] + " </td> <td> " + jdata['data'][index][4] + "</td><td>   <button onclick='deleteComment(" + JSON.stringify(jdata['data'][index][0]) + ")'  id=" + jdata['data'][index][0] + " class='btn btn-danger'>Delete</button> </td></tr> "
 
                 }
                 // console.log('str', str)

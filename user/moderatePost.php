@@ -154,6 +154,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $('.category').val(data[0][3])
         $('.postid').val(data[0][0])
     }
+    const deletePost = (d) => {
+        var id = JSON.parse(d)
+        console.log('id', id)
+        var msg = prompt("Are you sure you want to delete this post", "Yes")
+        if (msg) {
+            $.post("./actions/deletePost.php?id=" + id, function(data, status) {
+                // 
+                console.log('data', data)
+                var jdata = JSON.parse(data)
+                console.log('data', jdata)
+                if (jdata['status'] == 200) {
+                    $(".alert").html(jdata['message'])
+                    window.location.reload()
+                    var str = jdata['status']['message']
+                    $("tbody").html(str)
+
+                } else {
+                    // $(".alert").html(jdata['message'])
+                }
+
+            });
+        }
+    }
     $("document").ready(() => {
         $("#card2").css("display", "none");
         $("#card").css("display", "block");
@@ -165,13 +188,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // 
             console.log('data', data)
             var jdata = JSON.parse(data)
-            console.log('data', jdata)
+            // console.log('data', jdata['data'][0][0])
             if (jdata['status'] == 200) {
                 // $(".alert").html(jdata['message'])
                 var str = []
                 for (let index = 0; index < jdata['data'].length; index++) {
                     str += " <tr> <td>" + jdata['data'][index][1] + "</td> <td>" +
-                        jdata['data'][index][3] + " </td> <td> " + jdata['data'][index][4] + "</td><td> <button id=" + jdata['data'][index][0] + " class='btn btn-danger'>Delete</button>   <button onclick='edit(" + JSON.stringify(jdata['data']) + ")'  class='btn btn-info'>Edit</button></td > < /tr> "
+                        jdata['data'][index][3] + " </td> <td> " + jdata['data'][index][4] + "</td><td> <button  onclick='deletePost(" + JSON.stringify(jdata['data'][index][0]) + ")'  class='btn btn-danger'>Delete</button>   <button onclick='edit(" + JSON.stringify(jdata['data']) + ")'  class='btn btn-info'>Edit</button></td > < /tr> "
 
                 }
                 // console.log('str', str)
