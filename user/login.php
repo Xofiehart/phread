@@ -122,7 +122,7 @@ session_destroy()
 
 
                 } else {
-                    $(".alert").html(jdata['message'])
+                    alert("wrong email or password")
                 }
 
             });

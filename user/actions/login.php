@@ -19,16 +19,20 @@
             $result = $conn->query($query);
             // // iterate over $result object one $row at a time // use fetch_array() to return an associative array while($row = $result->fetch_array()){
             $row = $result->fetch_all();
-
-            if ($row[0][2] === md5($pass)) {
-                $response = json_encode(array("message" => "successfully logged in", "status" => 200, "data" => array("fullname" => $row[0][3], "role" => $row[0][4], "id" => $row[0][0])));
-                $_SESSION['fullname'] = $row[0][3];
-                $_SESSION['id'] = $row[0][0];
-                $_SESSION['role'] = $row[0][4];
-                echo ($response);
+            if ($row) {
+                if ($row[0][2] === md5($pass)) {
+                    $response = json_encode(array("message" => "successfully logged in", "status" => 200, "data" => array("fullname" => $row[0][3], "role" => $row[0][4], "id" => $row[0][0])));
+                    $_SESSION['fullname'] = $row[0][3];
+                    $_SESSION['id'] = $row[0][0];
+                    $_SESSION['role'] = $row[0][4];
+                    echo ($response);
+                } else {
+                    $response = json_encode(array("message" =>  "failed to login", "status" => 404));
+                    echo $response;
+                }
             } else {
                 $response = json_encode(array("message" =>  "failed to login", "status" => 404));
-                echo ("failed to login: Invalid username or password");
+                echo $response;
             }
         }
     }
